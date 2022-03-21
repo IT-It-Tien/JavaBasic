@@ -1,46 +1,45 @@
 package Library;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 /**
  * Created by Dell on 3/20/2022
- *
+ * <p>
  * Library.Book
- *  id: "ma sach"
- *  name: "ten"
- *  author: "tac gia"
- *  isBorrowed: "trang thai muon"
- *
- *  Library.Book()
- *  Library.Book(id, name, author)
- *  Library.Book(otherBook): sao chep sach
- *
- *  borrow(): muon sach
- *  toString(): in ra thong tin sach
+ * id: "ma sach"
+ * name: "ten"
+ * author: "tac gia"
+ * isBorrowed: "trang thai muon": bool
+ * <p>
+ * Library.Book()
+ * Library.Book(id, name, author)
+ * Library.Book(otherBook): sao chep sach
+ * this.id = ottherBook.id
+ * <p>
+ * borrow(): muon sach
+ * giveBack(): tra sach
+ * toString(): in ra thong tin sach
  */
 public class Book {
-    private int id;
-    private String name;
-    private String author;
-    private Boolean isBorrowed;
+    int id;
+    String name;
+    String author;
+    boolean isBorroved;
+
 
     public Book() {
         id = 0;
-        name = "";
-        author = "";
-        isBorrowed = false;
+        name = " ";
+        author = " ";
+        isBorroved = false;
     }
 
-    public Book(int id, String name, String author) {
+    public Book(int id, String name, String author, String isBorroved) {
         this.id = id;
         this.name = name;
         this.author = author;
-        isBorrowed = false;
-    }
-
-    public Book(Book otherBook){
-        this.id = otherBook.getId();
-        this.name = otherBook.getName();
-        this.author = otherBook.getAuthor();
-        this.isBorrowed = otherBook.getIsBorrowed();
+        this.isBorroved = false;
     }
 
     public int getId() {
@@ -55,35 +54,33 @@ public class Book {
         return author;
     }
 
-    public Boolean getIsBorrowed() {
-        return isBorrowed;
-    }
-
-    public void setId(int id) {
+    public void setId() {
         this.id = id;
     }
 
-    public void setName(String name) {
+    public void setName() {
         this.name = name;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor() {
         this.author = author;
     }
 
-    public void setIsBorrowed(Boolean isBorrowed) {
-        this.isBorrowed = isBorrowed;
+    public void setIsBorrver() {
+        this.isBorroved = isBorroved;
     }
 
-    public void borrow() {
-        isBorrowed = true;
+    public void Broow(int id) {
+        isBorroved = false;
     }
 
-    public void giveBack() {
-        isBorrowed = false;
+    public void giveback(int id) {
+        isBorroved = true;
     }
 
-    public String toString() {
-        return id + " " + name + " " + author + " " + isBorrowed;
-    }
 }
+
+
+
+
+

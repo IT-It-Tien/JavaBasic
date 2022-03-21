@@ -1,94 +1,67 @@
 package Library;
 
+import java.util.Random;
+
 /**
  * Created by Dell on 3/20/2022.
  * Library:
- *  listBook: "1 mang sach"
- *
- *  addBook(): "them sach vao thu vien"
- *  borrowBook(id): "muon sach" => sach da duoc muon hay chua?
- *
- *  toString(): "in ra trang thai cua thu vien"
+ * listBook: "1 mang sach"
+ * <p>
+ * int arr[];
+ * Book listBook[3]
+ * <p>
+ * addBook(): "them sach vao thu vien"
+ * borrowBook(id): "muon sach" => sach da duoc muon hay chua?
+ * giveBack(id):
+ * <p>
+ * toString(): "in ra trang thai cua thu vien"
+ * <p>
+ * int arr[]
+ * index 0 1 2 3
+ * value 1 4 5 7
+ * arr[1] => 4
+ * <p>
+ * double arr[]
+ * index 0 1 2 3
+ * value 0.1 0.2 0.3 0.4
+ * <p>
+ * Book listBook[]
+ * index 0 1 2 3
+ * value book1 book2 book3 book4
+ * <p>
+ * listBook[3].borrow()
  */
 public class Library {
-    private Book[] listBook;
-    private int numberOfBook;
+    Book listBook[];
 
-    public Library() {
-        listBook = new Book[100];
-        numberOfBook = 0;
-    }
-
-    public void addBook(Book book) {
-        listBook[numberOfBook] = book;
-        numberOfBook++;
-    }
-
-    public int findBook(int id) {
-        for(int i = 0; i < numberOfBook; i++) {
-            if(listBook[i].getId() == id) {
-                return i;
-            }
+    public void addBook(int i) {
+        for (int j = 0; j < i; j++) {
+            listBook[j].getId();
+            listBook[j].getId();
+            listBook[j].getId();
+            listBook[j].isBorroved = true;
         }
-        return -1;
     }
 
     public String borrowBook(int id) {
-        int index = findBook(id);
-        if(index == -1) {
-            return "Quyen sach nay khong ton tai!";
-        }
-
-        if(listBook[index].getIsBorrowed()){
-            return "Quyen sach nay da duoc muon! " + listBook[index].toString();
-        }
-        listBook[index].borrow();
-        return "Muon thanh cong! Sach cua ban: " + listBook[index].toString();
+        if (listBook[id].isBorroved == false) return "sach chua duoc muon";
+        return "sach da duoc muon";
     }
 
-    public String giveBackBook(int id) {
-        int index = findBook(id);
-        if(index == -1) {
-            return "Quyen sach nay khong ton tai!";
-        }
-
-        if(!listBook[index].getIsBorrowed()){
-            return "Chua muon thi tra kieu gi? " + listBook[index].toString();
-        }
-
-        listBook[index].giveBack();
-
-        return "Tra sach thanh cong! " + listBook[index].toString();
+    public void giveBack(int id) {
+        listBook[id].isBorroved = false;
     }
 
     public String toString() {
-        String result = "\n Thong tin thu vien: \n";
-        for(int i = 0; i < numberOfBook; i++) {
-            result += i + " " + listBook[i].toString() + "\n";
+        for (int i = 0; i < n; i++) {
+            System.out.print(listBook[i].id + "/n" + listBook[i].name + "/n" + listBook[i].author + "/n" + listBook[i].isBorroved);
         }
-        return result;
+        return null;
     }
 
-    public static void main(String args[]) {
-        Library thuVien = new Library();
-        Book book1 = new Book(101, "Lap trinh huong doi tuong", "OOP");
-        Book book2 = new Book(102, "Phan tich va thiet ke huong doi tuong", "OOAD");
-        Book book3 = new Book(103, "Lap trinh game bang Java", "MOBILE");
-
-        thuVien.addBook(book1);
-        thuVien.addBook(book2);
-        thuVien.addBook(book3);
-
-        System.out.println(thuVien.toString());
-
-        System.out.println(thuVien.borrowBook(101));
-        System.out.println(thuVien.borrowBook(102));
-        System.out.println(thuVien.borrowBook(102));
-        System.out.println(thuVien.giveBackBook(103));
-        System.out.println(thuVien.borrowBook(103));
-        System.out.println(thuVien.giveBackBook(101));
+    public static void main(String[] argt) {
+        Book listBook[];
 
 
-        System.out.println(thuVien.toString());
     }
 }
