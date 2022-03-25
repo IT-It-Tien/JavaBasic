@@ -1,7 +1,5 @@
 package Library;
 
-import java.util.Random;
-
 /**
  * Created by Dell on 3/20/2022.
  * Library:
@@ -32,20 +30,40 @@ import java.util.Random;
  * listBook[3].borrow()
  */
 public class Library {
-    Book listBook[];
+    private Book[] listBook;
+    private int n;
 
-    public void addBook(int i) {
-        for (int j = 0; j < i; j++) {
-            listBook[j].getId();
-            listBook[j].getId();
-            listBook[j].getId();
-            listBook[j].isBorroved = true;
-        }
+    public Library() {
+        listBook = new Book[100];
+        n = 0;
+    }
+
+    public void addBook(Book book) {
+        listBook[n] = book;
+        n++;
+    }
+
+    public int findBook(int id) {
+//        for (int i = 0; i < n; i++) {
+//            if (listBook[i].getId() == id) {
+//                return i;
+//            }
+//        }
+//        return -1;
+        return  id-1;
     }
 
     public String borrowBook(int id) {
-        if (listBook[id].isBorroved == false) return "sach chua duoc muon";
-        return "sach da duoc muon";
+        int index = findBook(id);
+        if (index == -1) {
+            return "Quyen sach khong ton tai!";
+        }
+        if (listBook[index].getIsBorroved() == true){
+            return "Quyen sach da duoc muon." + listBook[index].toString();
+        }
+        listBook[index].Broow();{
+            return "Muon thanh cong. Sach cua ban day " + listBook[index].toString();
+        }
     }
 
     public void giveBack(int id) {
@@ -53,14 +71,29 @@ public class Library {
     }
 
     public String toString() {
+        String result = "\n Thong tin thu vien: \n";
         for (int i = 0; i < n; i++) {
-            System.out.print(listBook[i].id + "/n" + listBook[i].name + "/n" + listBook[i].author + "/n" + listBook[i].isBorroved);
+            result += i + " " + listBook[i].toString() + "\n";
         }
-        return null;
+        return result;
     }
 
     public static void main(String[] argt) {
-        Book listBook[];
+        Library thuVien = new Library();
+        Book book1 = new Book(1 , "lap trinh huong doi tuonh" , "OOP");
+        Book book2 = new Book(2 , "phan tich va thiet ke huong doi tuong" , "OOP");
+        Book book3 = new Book(3 , "lap trinh gane java" , "OOP");
+
+        thuVien.addBook(book1);
+        thuVien.addBook(book2);
+        thuVien.addBook(book3);
+
+        System.out.println(thuVien.borrowBook(1));
+        System.out.println(thuVien.borrowBook(2));
+        System.out.println(thuVien.borrowBook(3));
+        thuVien.giveBack(2);
+        System.out.println(thuVien.toString());
+
 
 
     }

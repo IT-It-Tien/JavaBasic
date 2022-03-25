@@ -35,7 +35,7 @@ public class Book {
         isBorroved = false;
     }
 
-    public Book(int id, String name, String author, String isBorroved) {
+    public Book(int id, String name, String author) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -54,6 +54,8 @@ public class Book {
         return author;
     }
 
+    public Boolean getIsBorroved(){ return isBorroved; }
+
     public void setId() {
         this.id = id;
     }
@@ -70,14 +72,17 @@ public class Book {
         this.isBorroved = isBorroved;
     }
 
-    public void Broow(int id) {
-        isBorroved = false;
-    }
-
-    public void giveback(int id) {
+    public void Broow() {
         isBorroved = true;
     }
 
+    public void giveback() {
+        isBorroved = false;
+    }
+
+    public String toString(){
+        return id + " " + name + " " + author + " " + isBorroved;
+    }
 }
 
 
