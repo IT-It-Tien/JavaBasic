@@ -27,24 +27,31 @@ public class StudentManagement {
         return false;
     }
 
-    public String studentsByGroup(){
-        Student[] group = new Student[10];
-        int m = 1;
-        String a = students[0].getGroup();
-
-        for (int i = 0 ; i < n ; i++) {
-            if (a != students[i].getGroup()) {
-                a = students[i].getGroup();
-                for (int j = i + 1; j < n; j++) {
-                   if (sameGroup(students[i],students[j])) {
-                       students[j] = group[m];
-                   }
-                   m++;
-                }
+    public Boolean isInGroups(String group, String[] groups, int n) {
+        for(int i = 0; i < n; i++) {
+            if(groups[i] == group) {
+                return true;
             }
         }
-        for (int i = 1 ; i <= m ; m++){
-            return group[i].getGroup() + "\n" + group[i].getInfo() + "\n" ;
+        return false;
+    }
+
+    public String studentsByGroup(){
+        String a = "";
+        String groups[] = new String[100];
+        int groupsLength = 0;
+
+        for (int i = 0 ; i < n ; i++) {
+            a = students[i].getGroup();
+            if (!isInGroups(a, groups, groupsLength)) {
+                groups[groupsLength++] = a;
+                System.out.println(a);
+                for (int j = 0; j < n; j++) {
+                   if (sameGroup(students[i], students[j])) {
+                       System.out.println(students[j].getInfo());
+                   }
+                }
+            }
         }
         return a;
     }
@@ -55,11 +62,13 @@ public class StudentManagement {
         Student s2 = new Student("Nguyen Van B","17020002","K62CB","17020002@vnu.edu.vn");
         Student s3 = new Student("Nguyen Van C","17020003","K62CC","17020003@vnu.edu.vn");
         Student s4 = new Student("Nguyen Van D","17020004","K62CB","17020004@vnu.edu.vn");
+        Student s5 = new Student("Nguyen Van E","17020004","K62CA","17020005@vnu.edu.vn");
 
         sinhVien.addStudent(s1);
         sinhVien.addStudent(s2);
         sinhVien.addStudent(s3);
         sinhVien.addStudent(s4);
+        sinhVien.addStudent(s5);
 
         sinhVien.studentsByGroup();
 
