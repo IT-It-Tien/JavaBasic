@@ -1,3 +1,7 @@
 git branch
 git checkout Long
 git checkout Truong
+
+git add .
+git commit -m "viet message vao day"
+git push
